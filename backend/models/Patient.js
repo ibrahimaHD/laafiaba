@@ -1,7 +1,7 @@
 const { pool } = require('../config/database');
 
 class Patient {
-    static async create({ user_id, date_naissance, groupe_sanguin, allergies, antecedents_medicaux, adresse, ville }) {
+    static async create({ user_id, date_naissance = null, groupe_sanguin = null, allergies = null, antecedents_medicaux = null, adresse = null, ville = null }) {
         const [result] = await pool.execute(
             `INSERT INTO patients (user_id, date_naissance, groupe_sanguin, allergies, antecedents_medicaux, adresse, ville) 
              VALUES (?, ?, ?, ?, ?, ?, ?)`,
